@@ -20,7 +20,8 @@ public class Application {
         items.forEach(System.out::println);
 
         productService.delete(1L);
-        Product ps4 = productService.get(3L);
+        Product ps4 = new Product(productService.get(3L).getName(),
+                productService.get(3L).getPrice());
         ps4.setPrice(1100);
         productService.update(ps4);
 

@@ -6,7 +6,6 @@ import com.internet.shop.lib.Service;
 import com.internet.shop.model.Product;
 import com.internet.shop.servise.interfaces.ProductService;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -21,7 +20,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product get(Long id) {
-        return productDao.get(id).orElseThrow(NoSuchElementException::new);
+        return productDao.get(id).get();
     }
 
     @Override
