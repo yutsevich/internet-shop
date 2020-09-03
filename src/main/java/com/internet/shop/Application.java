@@ -22,6 +22,7 @@ public class Application {
         productService.delete(1L);
         Product ps4 = new Product(productService.get(3L).getName(),
                 productService.get(3L).getPrice());
+        ps4.setId(3L);
         ps4.setPrice(1100);
         productService.update(ps4);
 
