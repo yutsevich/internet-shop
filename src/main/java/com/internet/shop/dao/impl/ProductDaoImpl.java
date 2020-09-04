@@ -1,4 +1,4 @@
-package com.internet.shop.dao;
+package com.internet.shop.dao.impl;
 
 import com.internet.shop.dao.interfaces.ProductDao;
 import com.internet.shop.db.Storage;
@@ -34,7 +34,7 @@ public class ProductDaoImpl implements ProductDao {
         List<Product> products = getAll();
         IntStream.range(0, products.size())
                 .filter(i -> products.get(i).getId().equals(product.getId()))
-                .forEach(index -> products.set(index, product));
+                .forEach(i -> products.set(i, product));
         return product;
     }
 

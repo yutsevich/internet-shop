@@ -1,4 +1,4 @@
-package com.internet.shop.servise;
+package com.internet.shop.servise.impl;
 
 import com.internet.shop.dao.interfaces.ProductDao;
 import com.internet.shop.lib.Inject;
