@@ -6,11 +6,11 @@ import com.internet.shop.lib.Inject;
 import com.internet.shop.lib.Service;
 import com.internet.shop.model.Product;
 import com.internet.shop.model.ShoppingCart;
-import com.internet.shop.servise.interfaces.ShoppingCartServise;
+import com.internet.shop.servise.interfaces.ShoppingCartService;
 import java.util.ArrayList;
 
 @Service
-public class ShoppingCartServiceImpl implements ShoppingCartServise {
+public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Inject
     private ShoppingCartDao shoppingCartDao;

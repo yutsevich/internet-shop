@@ -3,7 +3,7 @@ package com.internet.shop.servise.interfaces;
 import com.internet.shop.model.Product;
 import com.internet.shop.model.ShoppingCart;
 
-public interface ShoppingCartServise {
+public interface ShoppingCartService {
     ShoppingCart create(ShoppingCart shoppingCart);
 
     ShoppingCart addProduct(ShoppingCart shoppingCart, Product product);
