@@ -38,7 +38,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean delete(Long id) {
+    public boolean deleteById(Long id) {
         return Storage.users.removeIf(u -> u.getId().equals(id));
+    }
+
+    @Override
+    public boolean delete(User item) {
+        return Storage.users.removeIf(u -> u.equals(item));
     }
 }

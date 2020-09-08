@@ -13,5 +13,5 @@ public interface OrderService {
 
     List<Order> getAll();
 
-    boolean delete(Long id);
+    boolean deleteById(Long id);
 }
