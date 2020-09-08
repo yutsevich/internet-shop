@@ -1,13 +1,11 @@
 package com.internet.shop.servise.impl;
 
 import com.internet.shop.dao.interfaces.ShoppingCartDao;
-import com.internet.shop.db.Storage;
 import com.internet.shop.lib.Inject;
 import com.internet.shop.lib.Service;
 import com.internet.shop.model.Product;
 import com.internet.shop.model.ShoppingCart;
 import com.internet.shop.servise.interfaces.ShoppingCartService;
-import java.util.ArrayList;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
@@ -22,31 +20,26 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public ShoppingCart addProduct(ShoppingCart shoppingCart, Product product) {
-        shoppingCartDao.get(shoppingCart.getId()).get()
-                .getProducts()
-                .add(product);
-        return shoppingCartDao.get(shoppingCart.getId()).get();
+        shoppingCart.getProducts().add(product);
+        return shoppingCartDao.update(shoppingCart);
     }
 
     @Override
     public boolean deleteProduct(ShoppingCart shoppingCart, Product product) {
-        return shoppingCartDao.get(shoppingCart.getId()).get()
-                .getProducts()
-                .removeIf(p -> p.getId().equals(product.getId()));
+        shoppingCart.getProducts().remove(product);
+        shoppingCartDao.update(shoppingCart);
+        return true;
     }
 
     @Override
     public void clear(ShoppingCart shoppingCart) {
-        Storage.shoppingCarts.stream()
-                .filter(sc -> sc.getId().equals(shoppingCart.getId()))
-                .forEach(sc -> sc.setProducts(new ArrayList<Product>()));
+        shoppingCart.getProducts().clear();
+        shoppingCartDao.update(shoppingCart);
     }
 
     @Override
     public ShoppingCart getByUserId(Long userId) {
-        return Storage.shoppingCarts.stream()
-                .filter(sc -> sc.getUserId().equals(userId))
-                .findFirst().get();
+        return shoppingCartDao.getByUserId(userId);
     }
 
     @Override

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface OrderDao {
+    List<Order> getUserOrders(Long userId);
+
     Order create(Order order);
 
     Optional<Order> get(Long id);
