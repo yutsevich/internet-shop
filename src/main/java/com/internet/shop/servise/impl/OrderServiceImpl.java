@@ -27,16 +27,14 @@ public class OrderServiceImpl implements OrderService {
         Long userId = shoppingCart.getUserId();
         Order order = new Order(userId);
         order.setProducts(products);
-        Storage.addOrder(order);
-        shoppingCartDao.update(new ShoppingCart(shoppingCart.getUserId()));
+        orderDao.create(order);
+        shoppingCart.getProducts().clear();
         return order;
     }
 
     @Override
     public List<Order> getUserOrders(Long userId) {
-        return Storage.orders.stream()
-                .filter(o -> o.getUserId().equals(userId))
-                .collect(Collectors.toList());
+        return orderDao.getUserOrders(userId);
     }
 
     @Override
