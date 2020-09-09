@@ -43,7 +43,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean delete(User item) {
-        return Storage.users.removeIf(u -> u.equals(item));
+    public boolean delete(User user) {
+        return Storage.users.remove(user);
     }
 }
