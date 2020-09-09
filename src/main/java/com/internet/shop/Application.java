@@ -21,7 +21,7 @@ public class Application {
         System.out.println("Just added products");
         System.out.println(productService.getAll());
 
-        productService.delete(1L);
+        productService.deleteById(1L);
         Product ps4 = new Product(productService.get(3L).getName(),
                 productService.get(3L).getPrice());
         ps4.setId(3L);
@@ -68,7 +68,7 @@ public class Application {
         System.out.println(orderService.getUserOrders(user1.getId()));
         System.out.println(orderService.getUserOrders(user2.getId()));
         System.out.println("After service orders");
-        orderService.delete(user1.getId());
+        orderService.deleteById(user1.getId());
         System.out.println(orderService.getAll());
     }
 }
