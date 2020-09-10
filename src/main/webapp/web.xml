@@ -22,7 +22,7 @@
 
     <servlet-mapping>
         <servlet-name>inject data</servlet-name>
-        <url-pattern>/injectData</url-pattern>
+        <url-pattern>/inject</url-pattern>
     </servlet-mapping>
     <!--All users-->
     <servlet>
@@ -82,7 +82,7 @@
 
     <servlet-mapping>
         <servlet-name>Add product to cart</servlet-name>
-        <url-pattern>/shoppingCart/product/add</url-pattern>
+        <url-pattern>/shopping-carts/products/add</url-pattern>
     </servlet-mapping>
     <!--Shopping cart-->
     <servlet>
@@ -92,6 +92,6 @@
 
     <servlet-mapping>
         <servlet-name>Shopping cart</servlet-name>
-        <url-pattern>/shoppingCart</url-pattern>
+        <url-pattern>/shopping-carts</url-pattern>
     </servlet-mapping>
 </web-app>

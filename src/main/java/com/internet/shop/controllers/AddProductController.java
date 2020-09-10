@@ -24,10 +24,10 @@ public class AddProductController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         String name = req.getParameter("name");
-        String priceStr = req.getParameter("price");
+        String price = req.getParameter("price");
 
-        if (name != null && priceStr != null && !name.equals("") && !priceStr.equals("")) {
-            productService.create(new Product(name,Long.parseLong(priceStr)));
+        if (name != null && price != null && !name.equals("") && !price.equals("")) {
+            productService.create(new Product(name, Long.parseLong(price)));
             resp.sendRedirect(req.getContextPath() + "/");
         } else {
             req.setAttribute("message", "Invalid data");
