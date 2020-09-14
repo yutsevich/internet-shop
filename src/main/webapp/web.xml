@@ -117,7 +117,7 @@
     <!--Shopping cart-->
     <servlet>
         <servlet-name>Shopping cart</servlet-name>
-        <servlet-class>com.internet.shop.controllers.GetAllProductsFromShoppingCartController</servlet-class>
+        <servlet-class>com.internet.shop.controllers.GetUserShoppingCartController</servlet-class>
     </servlet>
 
     <servlet-mapping>
