@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.29">
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/servise/impl/OrderServiceImpl.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/servise/impl/UserServiceImpl.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/servise/impl/ProductServiceImpl.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/servise/impl/ShoppingCartServiceImpl.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/servise/interfaces/UserService.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/servise/interfaces/ShoppingCartService.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/servise/interfaces/ProductService.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/servise/interfaces/OrderService.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/Application.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/dao/impl/OrderDaoImpl.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/dao/impl/ProductDaoImpl.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/dao/impl/ShoppingCartDaoImpl.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/dao/impl/UserDaoImpl.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/dao/interfaces/UserDao.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/dao/interfaces/ShoppingCartDao.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/dao/interfaces/OrderDao.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/dao/interfaces/GenericDao.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/dao/interfaces/ProductDao.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/model/Order.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/model/Product.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/model/User.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/model/ShoppingCart.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/lib/Inject.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/lib/Injector.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/lib/Service.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/lib/Dao.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/db/Storage.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/GetAllOrdersFromAllUsersController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/AddProductToShoppingCartController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/GetAllUsersController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/admin/GetAllProductsForAdminController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/IndexController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/DeleteOrderController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/InjectDataController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/RegistrationController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/CompleteOrderController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/GetAllProductsController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/GetAllOrdersOfUserController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/DeleteUserController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/GetOrderDetailsController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/GetUserShoppingCartController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/DeleteProductController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/DeleteProductFromShoppingCartController.java">
+</file>
+<file name="/Users/anastasia/Documents/JavaMA/hw24/internet-shop/src/main/java/com/internet/shop/controllers/AddProductController.java">
+</file>
+</checkstyle>
