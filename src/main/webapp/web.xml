@@ -44,16 +44,6 @@
         <servlet-name>Registration</servlet-name>
         <url-pattern>/registration</url-pattern>
     </servlet-mapping>
-    <!--Login-->
-    <servlet>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>com.internet.shop.controllers.LoginController</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/login</url-pattern>
-    </servlet-mapping>
     <!--Delete user-->
     <servlet>
         <servlet-name>Delete user</servlet-name>
@@ -184,15 +174,4 @@
         <servlet-name>Order details</servlet-name>
         <url-pattern>/users/orders/details</url-pattern>
     </servlet-mapping>
-
-<!--    &lt;!&ndash;Authentication filter&ndash;&gt;-->
-<!--    <filter>-->
-<!--        <filter-name>Authentication filter</filter-name>-->
-<!--        <filter-class>com.internet.shop.web.filters.AuthenticationFilter</filter-class>-->
-<!--    </filter>-->
-
-<!--    <filter-mapping>-->
-<!--        <filter-name>Authentication filter</filter-name>-->
-<!--        <url-pattern>/*</url-pattern>-->
-<!--    </filter-mapping>-->
 </web-app>

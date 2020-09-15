@@ -1,8 +1,10 @@
 package com.internet.shop.controllers;
 
 import com.internet.shop.lib.Injector;
+import com.internet.shop.model.Product;
 import com.internet.shop.model.ShoppingCart;
 import com.internet.shop.model.User;
+import com.internet.shop.servise.interfaces.ProductService;
 import com.internet.shop.servise.interfaces.ShoppingCartService;
 import com.internet.shop.servise.interfaces.UserService;
 import java.io.IOException;
@@ -13,9 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 
 public class InjectDataController extends HttpServlet {
     public static final Injector injector = Injector.getInstance("com.internet.shop");
-    private UserService userService = (UserService) injector.getInstance(UserService.class);
+    private final UserService userService = (UserService) injector.getInstance(UserService.class);
     private final ShoppingCartService shoppingCartService =
             (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
+    private final ProductService productService =
+            (ProductService) injector.getInstance(ProductService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -24,6 +28,10 @@ public class InjectDataController extends HttpServlet {
         User user2 = userService.create(new User("User2", "log2", "222"));
         ShoppingCart shoppingCart1 = shoppingCartService.create(new ShoppingCart(user1.getId()));
         ShoppingCart shoppingCart2 = shoppingCartService.create(new ShoppingCart(user2.getId()));
+        productService.create(new Product("apple", 3));
+        productService.create(new Product("peach", 4));
+        productService.create(new Product("watermelon", 9));
+
         req.getRequestDispatcher("/WEB-INF/views/injectData.jsp").forward(req,resp);
     }
 }
