@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class GetOrderDetailsController extends HttpServlet {
-    private static final Long ORDER_ID = 1L;
     private static final Injector injector = Injector.getInstance("com.internet.shop");
     private final OrderService orderService =
             (OrderService) injector.getInstance(OrderService.class);
@@ -19,7 +18,8 @@ public class GetOrderDetailsController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        Order order = orderService.get(ORDER_ID);
+        Long orderId = Long.parseLong(req.getParameter("id"));
+        Order order = orderService.get(orderId);
         req.setAttribute("order", order);
         req.setAttribute("sum", order.getProducts().stream()
                 .map(Product::getPrice)
