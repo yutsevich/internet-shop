@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
         urlPatterns = {"/*"})
 public class AuthenticationFilter implements Filter {
     public static final Injector injector = Injector.getInstance("com.internet.shop");
+    private static final String USER_ID = "user_id";
     private final UserService userService = (UserService) injector.getInstance(UserService.class);
 
     @Override
@@ -35,7 +36,7 @@ public class AuthenticationFilter implements Filter {
             filterChain.doFilter(req, resp);
             return;
         }
-        Long userId = (Long) req.getSession().getAttribute("user_id");
+        Long userId = (Long) req.getSession().getAttribute(USER_ID);
         if (userId == null || userService.get(userId) == null) {
             resp.sendRedirect("/login");
             return;
