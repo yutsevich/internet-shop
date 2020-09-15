@@ -184,4 +184,15 @@
         <servlet-name>Order details</servlet-name>
         <url-pattern>/users/orders/details</url-pattern>
     </servlet-mapping>
+
+<!--    &lt;!&ndash;Authentication filter&ndash;&gt;-->
+<!--    <filter>-->
+<!--        <filter-name>Authentication filter</filter-name>-->
+<!--        <filter-class>com.internet.shop.web.filters.AuthenticationFilter</filter-class>-->
+<!--    </filter>-->
+
+<!--    <filter-mapping>-->
+<!--        <filter-name>Authentication filter</filter-name>-->
+<!--        <url-pattern>/*</url-pattern>-->
+<!--    </filter-mapping>-->
 </web-app>
