@@ -3,8 +3,8 @@ package com.internet.shop.controllers;
 import com.internet.shop.lib.Injector;
 import com.internet.shop.model.User;
 import com.internet.shop.security.AuthenticationService;
+import com.internet.shop.exceptions.AuthenticationException;
 import java.io.IOException;
-import javax.naming.AuthenticationException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +32,7 @@ public class LoginController extends HttpServlet {
             User user = authService.login(login, password);
             HttpSession session = req.getSession();
             session.setAttribute("user_id",user.getId());
-        } catch (AuthenticationException | com.internet.shop.exceptions.AuthenticationException e) {
+        } catch (AuthenticationException e) {
             req.setAttribute("errorMsg", e.getMessage());
             req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req, resp);
             return;
