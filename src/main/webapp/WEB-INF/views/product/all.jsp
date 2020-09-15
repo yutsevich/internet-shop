@@ -24,7 +24,6 @@
         </tr>
     </c:forEach>
 </table>
-
 <a href="${pageContext.request.contextPath}/">Main page</a>
 </body>
 </html>

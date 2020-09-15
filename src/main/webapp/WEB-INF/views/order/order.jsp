@@ -5,7 +5,6 @@
     <title>Order</title>
 </head>
 <body>
-
 <table border="1">
     <tr>
         <th>Name</th>
@@ -22,7 +21,6 @@
         </tr>
     </c:forEach>
 </table>
-
 <a href="${pageContext.request.contextPath}/users/orders/details">Details</a>
 <a href="${pageContext.request.contextPath}/users/orders/all">All my orders</a>
 <a href="${pageContext.request.contextPath}/">Main page</a>

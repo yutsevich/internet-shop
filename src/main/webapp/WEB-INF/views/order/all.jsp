@@ -5,7 +5,6 @@
     <title>Orders</title>
 </head>
 <body>
-
 <table border="1">
     <tr>
         <th>Id</th>
@@ -25,7 +24,6 @@
         </tr>
     </c:forEach>
 </table>
-
 <a href="${pageContext.request.contextPath}/">Main page</a>
 </body>
 </html>
