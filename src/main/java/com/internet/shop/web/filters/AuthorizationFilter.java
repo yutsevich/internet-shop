@@ -5,7 +5,6 @@ import com.internet.shop.lib.Injector;
 import com.internet.shop.model.Role;
 import com.internet.shop.model.User;
 import com.internet.shop.servise.interfaces.UserService;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
