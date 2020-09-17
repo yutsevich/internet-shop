@@ -1,9 +1,11 @@
 package com.internet.shop.web.filters;
 
+import com.internet.shop.controllers.LoginController;
 import com.internet.shop.lib.Injector;
 import com.internet.shop.model.Role;
 import com.internet.shop.model.User;
 import com.internet.shop.servise.interfaces.UserService;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AuthorizationFilter implements Filter {
     public static final Injector injector = Injector.getInstance("com.internet.shop");
-    private static final String USER_ID = "user_id";
     private final UserService userService = (UserService) injector.getInstance(UserService.class);
     private final Map<String, List<Role.RoleName>> protectedUrls = new HashMap<>();
 
@@ -47,24 +48,13 @@ public class AuthorizationFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
-        String url = req.getServletPath();
-        if (protectedUrls.containsKey(url)) {
-            filterChain.doFilter(req, resp);
-            return;
-        }
-        Long userId = (Long) req.getSession().getAttribute(USER_ID);
-        User user = userService.get(userId);
-        if (userId == null) {
-            resp.sendRedirect("/login");
-            return;
-        }
-        filterChain.doFilter(req, resp);
-
-        if (isAuthorized(user, protectedUrls.get(url))) {
+        String requestedUrl = req.getServletPath();
+        Long userId = (Long) req.getSession().getAttribute(LoginController.USER_ID);
+        if (!protectedUrls.containsKey(requestedUrl)
+                || isAuthorized(userService.get(userId), protectedUrls.get(requestedUrl))) {
             filterChain.doFilter(req, resp);
         } else {
-            req.getRequestDispatcher("WEB-INF/views/accessDenied.jsp")
-                    .forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/views/accessDenied.jsp").forward(req, resp);
         }
     }
 
