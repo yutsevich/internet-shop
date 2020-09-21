@@ -71,8 +71,8 @@ public class ProductDaoJdbcImpl implements ProductDao {
     @Override
     public Product update(Product product) {
         try (Connection connection = ConnectionUtil.getConnection()) {
-            String query =
-                    "UPDATE products SET product_name=?, price=? WHERE product_id=? & deleted=FALSE";
+            String query = "UPDATE products SET product_name=?, price=? "
+                    + "WHERE product_id=? & deleted=FALSE";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, product.getId());
             statement.setString(1, product.getName());
