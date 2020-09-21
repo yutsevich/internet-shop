@@ -42,7 +42,6 @@ public class UserDaoImpl implements UserDao {
         return Storage.users.removeIf(u -> u.getId().equals(id));
     }
 
-    @Override
     public boolean delete(User user) {
         return Storage.users.remove(user);
     }

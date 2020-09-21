@@ -50,7 +50,6 @@ public class OrderDaoImpl implements OrderDao {
         return Storage.orders.removeIf(o -> o.getId().equals(id));
     }
 
-    @Override
     public boolean delete(Order order) {
         return Storage.orders.remove(order);
     }

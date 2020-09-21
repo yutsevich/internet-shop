@@ -6,9 +6,13 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class ConnectionUtil {
+    private static final String USER = "root";
+    private static final String PASSWORD = "root";
+    private static final String URL = "jdbc:mysql://localhost:3306";
+
     static {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException exception) {
             throw new RuntimeException("Can not find MySql driver ", exception);
         }
@@ -16,9 +20,9 @@ public class ConnectionUtil {
 
     public static Connection getConnection() {
         Properties dbProperties = new Properties();
-        dbProperties.put("username", "root");
-        dbProperties.put("password", "root");
-        String url = "jdbc:mysql://localhost:3306";
+        dbProperties.put("user", USER);
+        dbProperties.put("password", PASSWORD);
+        String url = URL;
         try {
             return DriverManager.getConnection(url, dbProperties);
         } catch (SQLException throwables) {
