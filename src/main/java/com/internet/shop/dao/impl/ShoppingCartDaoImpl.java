@@ -2,13 +2,11 @@ package com.internet.shop.dao.impl;
 
 import com.internet.shop.dao.interfaces.ShoppingCartDao;
 import com.internet.shop.db.Storage;
-import com.internet.shop.lib.Dao;
 import com.internet.shop.model.ShoppingCart;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-@Dao
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
     @Override
     public ShoppingCart create(ShoppingCart shoppingCart) {
@@ -29,10 +27,10 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     }
 
     @Override
-    public ShoppingCart getByUserId(Long userId) {
+    public Optional<ShoppingCart> getByUserId(Long userId) {
         return Storage.shoppingCarts.stream()
                 .filter(sc -> sc.getUserId().equals(userId))
-                .findFirst().get();
+                .findFirst();
     }
 
     @Override

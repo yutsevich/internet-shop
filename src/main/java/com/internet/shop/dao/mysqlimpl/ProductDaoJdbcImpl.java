@@ -46,9 +46,9 @@ public class ProductDaoJdbcImpl implements ProductDao {
             if (resultSet.next()) {
                 return Optional.of(getProductFromResultSet(resultSet));
             }
-            return Optional.of(getProductFromResultSet(resultSet));
+            return Optional.empty();
         } catch (SQLException e) {
-            throw new DataProcessingException("Can't get product by id: " + id, e);
+            throw new DataProcessingException("Can not get product by id: " + id, e);
         }
     }
 
@@ -64,14 +64,14 @@ public class ProductDaoJdbcImpl implements ProductDao {
             }
             return products;
         } catch (SQLException e) {
-            throw new DataProcessingException("Can't connect to MySQL", e);
+            throw new DataProcessingException("Can not get all products ", e);
         }
     }
 
     @Override
     public Product update(Product product) {
         try (Connection connection = ConnectionUtil.getConnection()) {
-            String query = "UPDATE products SET product_name=?, price=? "
+            String query = "UPDATE products SET product_name=?, price=?"
                     + "WHERE product_id=? & deleted=FALSE";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, product.getId());
