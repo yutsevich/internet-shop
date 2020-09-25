@@ -28,7 +28,7 @@ public class AddProductController extends HttpServlet {
 
         if (name != null && price != null && !name.equals("") && !price.equals("")) {
             productService.create(new Product(name, Long.parseLong(price)));
-            resp.sendRedirect(req.getContextPath() + "/");
+            resp.sendRedirect(req.getContextPath() + "/products/all");
         } else {
             req.setAttribute("message", "Invalid data");
         }
