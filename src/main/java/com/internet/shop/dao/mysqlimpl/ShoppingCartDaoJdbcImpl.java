@@ -20,10 +20,10 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
 
     @Override
     public Optional<ShoppingCart> getByUserId(Long userId) {
-        try (Connection connection = ConnectionUtil.getConnection()) {
-            String query = "SELECT * FROM shopping_carts WHERE user_id=?;";
-            PreparedStatement statement = connection
-                    .prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        String query = "SELECT * FROM shopping_carts WHERE user_id=?;";
+        try (Connection connection = ConnectionUtil.getConnection();
+                PreparedStatement statement = connection
+                        .prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             statement.setLong(1, userId);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -38,10 +38,10 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
 
     @Override
     public ShoppingCart create(ShoppingCart shoppingCart) {
-        try (Connection connection = ConnectionUtil.getConnection()) {
-            String query = "INSERT INTO shopping_carts (user_id) VALUES (?)";
-            PreparedStatement statement = connection
-                    .prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        String query = "INSERT INTO shopping_carts (user_id) VALUES (?);";
+        try (Connection connection = ConnectionUtil.getConnection();
+                PreparedStatement statement = connection
+                        .prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             statement.setLong(1, shoppingCart.getUserId());
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
@@ -57,9 +57,9 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
 
     @Override
     public Optional<ShoppingCart> get(Long id) {
-        try (Connection connection = ConnectionUtil.getConnection()) {
-            String query = "SELECT * FROM shopping_carts WHERE cart_id=?;";
-            PreparedStatement statement = connection.prepareStatement(query);
+        String query = "SELECT * FROM shopping_carts WHERE cart_id=?;";
+        try (Connection connection = ConnectionUtil.getConnection();
+                PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -73,9 +73,9 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
 
     @Override
     public List<ShoppingCart> getAll() {
-        try (Connection connection = ConnectionUtil.getConnection()) {
-            String query = "SELECT * FROM shopping_carts;";
-            PreparedStatement statement = connection.prepareStatement(query);
+        String query = "SELECT * FROM shopping_carts;";
+        try (Connection connection = ConnectionUtil.getConnection();
+                PreparedStatement statement = connection.prepareStatement(query)) {
             ResultSet resultSet = statement.executeQuery();
             List<ShoppingCart> shoppingCarts = new ArrayList<>();
             while (resultSet.next()) {
@@ -101,9 +101,9 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
 
     @Override
     public boolean deleteById(Long id) {
-        try (Connection connection = ConnectionUtil.getConnection()) {
-            String query = "DELETE FROM shopping_carts WHERE cart_id=?";
-            PreparedStatement statement = connection.prepareStatement(query);
+        String query = "DELETE FROM shopping_carts WHERE cart_id=?;";
+        try (Connection connection = ConnectionUtil.getConnection();
+                PreparedStatement statement = connection.prepareStatement(query)) {
             statement.executeUpdate();
             deleteShoppingCartProducts(id, connection);
         } catch (SQLException e) {
@@ -113,15 +113,13 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
     }
 
     private boolean deleteShoppingCartProducts(Long cartId, Connection connection) {
-        try {
-            String query = "DELETE FROM shopping_carts_products WHERE cart_id=?";
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.executeUpdate();
+        String query = "DELETE FROM shopping_carts_products WHERE cart_id=?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            return statement.executeUpdate() == 1;
         } catch (SQLException e) {
             throw new DataProcessingException("Can not delete products from shopping cart by id "
                     + cartId, e);
         }
-        return true;
     }
 
     private List<Product> getProductsFromShoppingCart(Long cartId, Connection connection)
