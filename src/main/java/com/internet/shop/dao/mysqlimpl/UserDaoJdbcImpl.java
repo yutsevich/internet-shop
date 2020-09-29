@@ -38,13 +38,14 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public User create(User user) {
-        String query = "INSERT INTO users (user_name, login, password) VALUES (?,?,?);";
+        String query = "INSERT INTO users (user_name, login, password, salt) VALUES (?,?,?,?);";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement statement = connection
                         .prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, user.getName());
             statement.setString(2, user.getLogin());
             statement.setString(3, user.getPassword());
+            statement.setBytes(4, user.getSalt());
             statement.executeUpdate();
             addUsersRolesById(user, connection);
             ResultSet resultSet = statement.getGeneratedKeys();
@@ -91,13 +92,14 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public User update(User user) {
-        String query = "UPDATE users SET user_name=?, login=?"
-                + "WHERE password=? & deleted=FALSE";
+        String query = "UPDATE users SET user_name = ?, login = ?, password = ?, salt = ?"
+                + "WHERE user_id = ? AND deleted = false";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, user.getName());
             statement.setString(2, user.getLogin());
             statement.setString(3, user.getPassword());
+            statement.setBytes(4, user.getSalt());
             deleteUsersRolesById(user.getId(), connection);
             addUsersRolesById(user, connection);
             statement.executeUpdate();
@@ -145,7 +147,8 @@ public class UserDaoJdbcImpl implements UserDao {
         String login = resultSet.getString("login");
         String password = resultSet.getString("password");
         Set<Role> roles = getUsersRoles(id, connection);
-        return new User(id, name, login, password, roles);
+        byte[] salt = resultSet.getBytes("salt");
+        return new User(id, name, login, password, roles, salt);
     }
 
     private Set<Role> getUsersRoles(Long userId, Connection connection) {

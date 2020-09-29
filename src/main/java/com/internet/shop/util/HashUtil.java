@@ -1,6 +1,5 @@
 package com.internet.shop.util;
 
-import com.internet.shop.model.User;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -27,13 +26,5 @@ public class HashUtil {
             e.printStackTrace();
         }
         return hashedPassword.toString();
-    }
-
-    private boolean isValid(String password, byte[] salt) {
-        User user = new User();
-        user.setPassword(hashPassword(password, salt));
-        user.setSalt(salt);
-
-        return hashPassword(password,salt).equals(user.getPassword());
     }
 }
