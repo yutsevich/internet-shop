@@ -25,7 +25,7 @@ public class HashUtil {
             }
         } catch (NoSuchAlgorithmException e) {
             System.out.println("Invalid hashing algorithm " + HASHING_ALGORITHM);
-            e.printStackTrace();
+            throw new RuntimeException();
         }
         return hashedPassword.toString();
     }
