@@ -1,7 +1,6 @@
 package com.internet.shop.web.filters;
 
 import com.internet.shop.lib.Injector;
-import com.internet.shop.servise.interfaces.UserService;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 public class AuthenticationFilter implements Filter {
     public static final Injector injector = Injector.getInstance("com.internet.shop");
     private static final String USER_ID = "user_id";
-    private final UserService userService = (UserService) injector.getInstance(UserService.class);
     private final Set<String> availableUrls = new HashSet<>();
 
     @Override
