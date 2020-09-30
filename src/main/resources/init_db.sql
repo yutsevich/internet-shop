@@ -9,11 +9,12 @@ CREATE TABLE `internet_shop`.`products`
 );
 CREATE TABLE `internet_shop`.`users`
 (
-    `user_id`   BIGINT(11)   NOT NULL AUTO_INCREMENT,
-    `user_name` VARCHAR(225) NOT NULL,
-    `login`     VARCHAR(225) NOT NULL,
-    `password`  VARCHAR(225) NOT NULL,
-    `deleted`   TINYINT      NOT NULL DEFAULT FALSE,
+    `user_id`   BIGINT(11)     NOT NULL AUTO_INCREMENT,
+    `user_name` VARCHAR(225)   NOT NULL,
+    `login`     VARCHAR(225)   NOT NULL,
+    `password`  VARCHAR(225)   NOT NULL,
+    `salt`      VARBINARY(500) NOT NULL,
+    `deleted`   TINYINT        NOT NULL DEFAULT FALSE,
     PRIMARY KEY (`user_id`)
 );
 CREATE TABLE `internet_shop`.`roles`
