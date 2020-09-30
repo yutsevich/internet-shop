@@ -100,6 +100,7 @@ public class UserDaoJdbcImpl implements UserDao {
             statement.setString(2, user.getLogin());
             statement.setString(3, user.getPassword());
             statement.setBytes(4, user.getSalt());
+            statement.setLong(5, user.getId());
             deleteUsersRolesById(user.getId(), connection);
             addUsersRolesById(user, connection);
             statement.executeUpdate();
