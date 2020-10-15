@@ -2,13 +2,11 @@ package com.internet.shop.dao.impl;
 
 import com.internet.shop.dao.interfaces.UserDao;
 import com.internet.shop.db.Storage;
-import com.internet.shop.lib.Dao;
 import com.internet.shop.model.User;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-@Dao
 public class UserDaoImpl implements UserDao {
     @Override
     public User create(User user) {
@@ -43,7 +41,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean delete(User user) {
-        return Storage.users.remove(user);
+    public Optional<User> findByLogin(String login) {
+        return Storage.users.stream()
+                .filter(user -> user.getLogin().equals(login)).findFirst();
     }
 }

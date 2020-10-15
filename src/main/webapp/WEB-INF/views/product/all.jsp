@@ -19,12 +19,11 @@
                 <c:out value="${product.price}"/>
             </td>
             <td>
-                <a href="${pageContext.request.contextPath}/shopping-carts/products/add?id=${product.id}">Add</a>
+                <a href="${pageContext.request.contextPath}/shopping-carts/products/add?id=${product.id}">Buy</a>
             </td>
         </tr>
     </c:forEach>
 </table>
-
 <a href="${pageContext.request.contextPath}/">Main page</a>
 </body>
 </html>
